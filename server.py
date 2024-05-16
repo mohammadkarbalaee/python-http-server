@@ -36,9 +36,9 @@ def handle_client(conn, addr):
             break   
 
         if data:
-            print(f"Request from {addr}:\n{data.decode()}")
+            print(f"\n---------------------------------------- \nRequest from {addr}:\n{data.decode()}")
 
-            if data.decode().startswith("GET /index.html"):
+            if data.decode().startswith("GET /200.html"):
                 conn.sendall(HTTP_RESPONSE_OK.encode())
                 print(f"Sent 200 response to {addr}")
             else:
