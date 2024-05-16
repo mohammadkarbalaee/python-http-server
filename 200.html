@@ -715,7 +715,7 @@ nav .menu .menu_icon:hover .icon:after {
              <div class="text">
                  <article>
                      <p>Congrats! <br> You made a successful request</p>
-                     <button>Go to 404</button>
+                     <button onclick="goTo404()">Go to 404</button>
                  </article>
              </div>
  
@@ -731,7 +731,11 @@ nav .menu .menu_icon:hover .icon:after {
   <script>
     // Parallax Code
     var scene = document.getElementById('scene');
-        var parallax = new Parallax(scene);
+    var parallax = new Parallax(scene);
+
+    function goTo404() {
+      window.location.href = 'http://localhost:8080/404.html';
+    }
   </script>
 </body>
 </html>
