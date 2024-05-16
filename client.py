@@ -1,7 +1,7 @@
 import socket
 
 # Define server address
-SERVER_HOST = '127.0.0.1'  # The server's hostname or IP address
+SERVER_HOST = 'https://python-http-server-zntk.onrender.com'  # The server's hostname or IP address
 SERVER_PORT = 8080          # The port used by the server
 
 # Define HTTP GET request
