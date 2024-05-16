@@ -27,17 +27,29 @@ HTTP/1.1 404 Not Found
 def handle_client(conn, addr):
     print(f"Connected by {addr}")
 
-    data = conn.recv(1024)
-    if data:
-        print(f"Request from {addr}:\n{data.decode()}")
+    while True:
+        data = conn.recv(1024)
 
-        if data.decode().startswith("GET /index.html"):
-            conn.sendall(HTTP_RESPONSE_OK.encode())
-        else:
-            conn.sendall(HTTP_RESPONSE_NOT_FOUND.encode())
+        if b'__CLOSE_CONNECTION__' in data:
+            conn.close()
+            print(f"Client {addr} closed connection")
+            break   
 
-    conn.close()
-    print(f"Connection closed by {addr}")
+        if data:
+            print(f"Request from {addr}:\n{data.decode()}")
+
+            if data.decode().startswith("GET /index.html"):
+                conn.sendall(HTTP_RESPONSE_OK.encode())
+                print(f"Sent 200 response to {addr}")
+            else:
+                conn.sendall(HTTP_RESPONSE_NOT_FOUND.encode()) 
+                print(f"Sent 404 response to {addr}")
+
+            conn.sendall(b'__END_OF_TRANSMISSION__')
+  
+    
+
+
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
