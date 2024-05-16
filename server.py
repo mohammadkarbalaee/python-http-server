@@ -5,7 +5,7 @@ HOST = '127.0.0.1'
 PORT = 8080     
 
 
-with open("index.html", "r") as file:
+with open("200.html", "r") as file:
     INDEX_HTML_CONTENT = file.read()
 
 with open("404.html", "r") as file:
