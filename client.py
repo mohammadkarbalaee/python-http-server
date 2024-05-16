@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
             s.sendall(HTTP_REQUEST.encode())
 
-            file = open('response.html', 'wb')
+            file = open('response.txt', 'wb')
 
             while True:
                 line = s.recv(1024)
@@ -31,6 +31,8 @@ if __name__ == "__main__":
                     file.write(line)
 
             file.close()
-            print('File has been received successfully.')
+            with open('response.txt', 'r') as file:
+                first_line = file.readline()
+                print(f"----------- HTTP RESPONSE ----------- \n{first_line}")
 
         s.close()    
