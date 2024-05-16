@@ -2,7 +2,7 @@ import socket
 import threading
 
 # Define host and port
-HOST = 'https://python-http-server-zntk.onrender.com'  # Standard loopback interface address (localhost)
+HOST = '100.20.92.101'  # Standard loopback interface address (localhost)
 PORT = 8080        # Port to listen on (non-privileged ports are > 1023)
 
 # Read the content of index.html
